@@ -16,9 +16,19 @@ const app = express();
 //    origin: 'https://kanbanapp-task.netlify.app/',
 //   credentials: true
 // }));
+const cors = require('cors');
+const express = require('express');
+const app = express();
+
+const allowedOrigin = 'https://kanbanapp-task.netlify.app';
+
 app.use(cors({
-  origin: '*'
+  origin: allowedOrigin,        // ✅ No trailing slash
+  credentials: true             // ✅ If you send cookies or Authorization headers
 }));
+
+// your routes here...
+
 app.use(express.json());
  
 // MongoDB Connection
