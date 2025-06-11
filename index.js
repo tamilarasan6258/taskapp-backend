@@ -12,9 +12,12 @@ dotenv.config();
 const app = express();
  
 // Middleware
+// app.use(cors({
+//    origin: 'https://kanbanapp-task.netlify.app/',
+//   credentials: true
+// }));
 app.use(cors({
-   origin: 'https://kanbanapp-task.netlify.app/',
-  credentials: true
+  origin: '*'
 }));
 app.use(express.json());
  
