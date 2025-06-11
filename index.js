@@ -13,7 +13,7 @@ const app = express();
  
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:4200',
+   origin: 'https://kanbanapp-task.netlify.app/',
   credentials: true
 }));
 app.use(express.json());
