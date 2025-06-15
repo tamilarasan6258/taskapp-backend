@@ -20,7 +20,26 @@ const app = express();
 //   credentials: true
 // }));
 
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: '*' }));
+
+const allowedOrigins = [
+  'https://kanbanapp-task.netlify.app',
+  'http://localhost:4200'  // allow local development
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 
 
 // Middleware to parse JSON request bodies
